@@ -48,7 +48,52 @@ Vue.createApp({
         body.classList.toggle('body-pd')
         // add padding to header
         header.classList.toggle('body-pd')
-        }
+        },
+
+        disableCard(id){
+          Swal.fire({
+            title: 'Disable Card',
+            text: "Are you sure you want to disable this card?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#014377',
+            cancelButtonColor: '#ff0000',
+            confirmButtonText: 'Confirm'
+          }).then ((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    input: "password",
+                    inputLabel: "Enter your password to confirm",
+                    inputValue:"",
+                    confirmButtonColor: '#014377',
+                    cancelButtonColor: '#ff0000',
+                    showCancelButton: true,
+                    confirmButtonText: 'Disable now'
+                  })
+                  .then(result =>{
+                    if (result.isConfirmed){
+                      axios.patch('/api/clients/current/cards', `id=${id}&password=${result.value}`)
+                      .then(() => {
+                        Swal.fire({
+                          title: 'Succeed',
+                          text: "Card disabled successful",
+                          icon: 'success',
+                          timer:2000
+                        }).then (() => location.reload())
+                      }).catch ((error) => {
+                        Swal.fire({
+                        title: 'Error',
+                        text: error.response.data,
+                        icon: 'error',
+                        timer:2000
+                      })})
+                    }
+                  })
+                }
+              })
+          },
+
+
     },
   
 

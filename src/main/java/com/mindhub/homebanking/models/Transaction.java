@@ -25,7 +25,7 @@ public class Transaction {
 	private LocalDateTime date;
 	private String description;
 
-	private double newAmount;
+	private double newBalance;
 
 
 	public Transaction() {}
@@ -38,13 +38,13 @@ public class Transaction {
 			this.account = account;
 	}
 
-	public Transaction (TransactionType type, double amount, LocalDateTime date, String description, Account account, double newAmount) {
+	public Transaction (TransactionType type, double amount, LocalDateTime date, String description, Account account, double newBalance) {
 		this.type = type;
 		this.amount = amount;
 		this.date = date;
 		this.description = description;
 		this.account = account;
-		this.newAmount = newAmount;
+		this.newBalance = newBalance;
 	}
 
 	public long getId() {return id;}
@@ -64,6 +64,6 @@ public class Transaction {
 	public Account getAccount() {return account;}
 	public void setAccount(Account account) {this.account = account;}
 
-	public double getNewAmount() {return newAmount;}
-	public void setNewAmount(double newAmount) {this.newAmount = newAmount;}
+	public double getNewBalance() {return newBalance;}
+	public void setNewBalance(double newBalance) {this.newBalance = newBalance;}
 }

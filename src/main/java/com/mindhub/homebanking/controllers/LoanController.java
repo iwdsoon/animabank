@@ -101,7 +101,7 @@ public class LoanController {
 
 		ClientLoan newClientLoan = new ClientLoan(loanApplicationDTO.getAmount()  * loan.getInterestRate(), loanApplicationDTO.getPayments(), currentClient,loan);
 		loanService.saveClientLoan(newClientLoan);
-		Transaction loanTransaction = new Transaction(CREDIT, loanApplicationDTO.getAmount(), LocalDateTime.now(), "loan approved", currentAccount);
+		Transaction loanTransaction = new Transaction(CREDIT, loanApplicationDTO.getAmount(), LocalDateTime.now(), "loan approved", currentAccount, (currentAccount.getBalance() + loanApplicationDTO.getAmount()));
 		transactionService.saveTransaction(loanTransaction);
 
 		currentAccount.setBalance(currentAccount.getBalance() + loanTransaction.getAmount());

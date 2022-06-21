@@ -160,6 +160,7 @@
                                 <th scope="col">Date</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Amount</th>
+                                <th scope="col">New Balance</th>
                                 <th scope="col">Description</th>
                               </tr>
                             </thead>
@@ -169,6 +170,7 @@
                                     <td>{{transaction.date.slice(0,10) + " - " + transaction.date.slice(11,19)}}</td>
                                     <td>{{transaction.type}}</td>
                                     <td>$ {{transaction.amount}}</td>
+                                    <td>$ {{transaction.newBalance}}</td>
                                     <td>{{transaction.description}}</td>
                 
                                 </tr>

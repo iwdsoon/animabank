@@ -42,7 +42,7 @@ public class PaymentController {
 //
 //		Client currentClient = clientService.getCurrentClient(authentication);
 //		List<Account> accounts = new ArrayList<>(currentClient.getAccounts());
-//		Account account = accounts.stream().filter(account1 -> account1.getBalance() >= paymentDTO.getAmount()).findFirst().orElse(null);
+//		Account account = accounts.stream().filter(account1 -> account1.getBalance() >= paymentDTO.getAmount() && account1.isActive()).findFirst().orElse(null);
 //		Card card = currentClient.getCards().stream().filter(card1 -> card1.isActive() && card1.getNumber() == paymentDTO.getNumber()).findFirst().orElse(null);
 //
 //		if (paymentDTO.getNumber().isEmpty() || paymentDTO.getName().isEmpty() || paymentDTO.getDescription().isEmpty() || paymentDTO.getThruDate() == null){

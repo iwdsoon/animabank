@@ -49,18 +49,6 @@ public class AccountController {
 		return new AccountDTO(currentAccount);
 	}
 
-//	@GetMapping("/clients/current/accounts/{id}")
-//	public AccountDTO getAccount(Authentication authentication, @PathVariable Long id) {
-//		Client currentClient = clientService.getCurrentClient(authentication);
-//		Account currentAccount = currentClient.getAccounts().stream().filter(account -> account.getId() == id && account.isActive()).findFirst().orElse(null);
-//
-//		if(!currentClient.getAccounts().contains(currentAccount)){
-//			return ;
-//		}
-//
-//		return new AccountDTO(currentAccount);
-//	}
-
 	@PostMapping(path= "/clients/current/accounts")
 	public ResponseEntity<Object> createNewAccount(Authentication authentication, @RequestParam AccountType type){
 		Client currentClient = clientService.getCurrentClient(authentication);

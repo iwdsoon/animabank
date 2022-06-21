@@ -9,8 +9,6 @@ Vue.createApp({
           accounts:[],
           account:[],
           lastTransactions:[],
-          errorActive: false,
-          errorMessage: null,
           debitClass: 'table-danger',
           creditClass: 'table-success',
 
@@ -45,12 +43,82 @@ Vue.createApp({
 
 
       createAccount(){
-        axios.post('/api/clients/current/accounts')
-        .then(() => location.reload())
-        .catch(error =>{
-          this.errorActive = true
-          this.errorMessage = (error.response.data)})
-      },
+        Swal.fire({
+          title: 'Do you want to create a new account?',
+          html: `<select id="selectAccountType" class="mt-3 form-select">
+          <option value="SAVING">Savings account</option>
+          <option value="CURRENT">Current account</option>
+        </select>` ,
+        showCancelButton: true,
+        confirmButtonColor: '#014377',
+        cancelButtonColor: '#ff0000',
+        confirmButtonText: 'Confirm'
+      }).then((result) => {
+          if (result.isConfirmed) {
+
+              let accountType = document.getElementById("selectAccountType")
+
+              axios.post('/api/clients/current/accounts', `type=${accountType.value}`)
+              .then(() => {
+                Swal.fire({
+                  title: 'Succeed',
+                  text: "Account created successful",
+                  icon: 'success',
+                  timer:2000
+                }).then (() => location.reload())
+              }).catch ((error) => {
+                Swal.fire({
+                title: 'Error',
+                text: error.response.data,
+                icon: 'error',
+                timer:2000
+              })})
+            }
+          })
+        },
+
+      disableAccount(id){
+        Swal.fire({
+          title: 'Disable Account',
+          text: "Are you sure you want to disable this account?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#014377',
+          cancelButtonColor: '#ff0000',
+          confirmButtonText: 'Confirm'
+        }).then ((result) => {
+              if (result.isConfirmed) {
+                Swal.fire({
+                  input: "password",
+                  inputLabel: "Enter your password to confirm",
+                  inputValue:"",
+                  confirmButtonColor: '#014377',
+                  cancelButtonColor: '#ff0000',
+                  showCancelButton: true,
+                  confirmButtonText: 'Disable now'
+                })
+                .then(result =>{
+                  if (result.isConfirmed){
+                    axios.patch('/api/clients/current/accounts', `id=${id}&password=${result.value}`)
+                    .then(() => {
+                      Swal.fire({
+                        title: 'Succeed',
+                        text: "Account disabled successful",
+                        icon: 'success',
+                        timer:2000
+                      }).then (() => location.reload())
+                    }).catch ((error) => {
+                      Swal.fire({
+                      title: 'Error',
+                      text: error.response.data,
+                      icon: 'error',
+                      timer:2000
+                    })})
+                  }
+                })
+              }
+            })
+        },
 
       toggleNav() {
 
