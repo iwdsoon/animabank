@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/489af5cc49.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./styles/dashboard.css" />
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+
+    <title>Online Banking AnimaBank | Dashboard</title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="body">
+            <header class="header" id="header">
+                <div>
+                    <img class="header_logo" src="./assets/logoanima.png" alt="logo" />
+                </div>
+
+                <div class="d-flex gap-5 align-items-center">
+                    <div class="nav-item dropdown">
+                        <a class="dropdown" id="messageDropDown" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+                            <i class="fa-solid fa-inbox header_icon"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                            aria-labelledby="messageDropDown">
+                            <p class="dropdown-header">Messages</p>
+                            <li class="dropdown-divider"></li>
+                            <a class="dropdown-item">
+                                <div class="item-thumbnail">
+                                    <div class="item-icon">
+                                        <i class="fa-solid fa-building-columns"></i>
+                                    </div>
+                                </div>
+                                <div class="item-content flex-grow">
+                                    <h6 class="font-weight-normal">Bank</h6>
+                                    <p class="font-weight-light small-text text-muted mb-0">
+                                        Welcome {{client.firstName}}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <a class="dropdown" id="notificationDropDown" href="#" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+                            <i class="fa-solid fa-bell header_icon"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                            aria-labelledby="notificationDropDown">
+                            <p class="mb-0 font-weight-normal float-left dropdown-header">
+                                Notifications
+                            </p>
+                            <li class="dropdown-divider"></li>
+                            <a class="dropdown-item">
+                                <div class="item-thumbnail">
+                                    <div class="item-icon">
+                                        <i class="fa-solid fa-info"></i>
+                                    </div>
+                                </div>
+                                <div class="item-content flex-grow">
+                                    <h6 class="font-weight-normal">Account created</h6>
+                                    <p class="font-weight-light small-text text-muted mb-0">
+                                        Just now
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="header_img rounded-circle dropdown">
+                        <a class="nav-link dropdown" href="#" id="profileDropDown" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span class="header_intials">{{intials}}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown" aria-labelledby="profile">
+                            <a class="dropdown-item">
+                                <div class="item-thumbnail">
+                                    <i class="fa-solid fa-gear"></i>
+                                </div>
+                                <div class="item-content flex-grow">
+                                    <h6 class="font-weight-normal">Settings</h6>
+                                </div>
+                            </a>
+                            <a @click="logOut" class="dropdown-item">
+                                <div class="item-thumbnail">
+                                    <i class="fa-solid fa-right-from-bracket nav_icon"></i>
+                                </div>
+                                <div class="item-content flex-grow">
+                                    <h6 class="font-weight-normal">Log out</h6>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="l-navbar" id="nav-bar">
+                <nav class="nav">
+                    <div>
+                        <div class="header_toggle">
+                            <i @click="toggleNav" class="fa-solid fa-bars" id="header-toggle"></i>
+                        </div>
+                        <div id="nav-content">
+                            <ul>
+                                <li>
+                                    <a class="nav_link active" aria-current="page" href="#"><i
+                                            class="fa-solid fa-border-all nav_icon"></i>Dashboard</a>
+                                </li>
+                                <li>
+                                    <a class="nav_link" href="./accounts.html"><i
+                                            class="fa-solid fa-file-invoice-dollar nav_icon"></i>Accounts</a>
+                                </li>
+                                <li>
+                                    <a class="nav_link" href="./cards.html"><i
+                                            class="fa-solid fa-credit-card nav_icon"></i>Cards</a>
+                                </li>
+                                <li>
+                                    <a class="nav_link" href="./loan-application.html"><i
+                                            class="fa-solid fa-hand-holding-dollar nav_icon"></i>Loans</a>
+                                </li>
+                                <li>
+                                    <a class="nav_link" href="./transfers.html"><i
+                                            class="fa-solid fa-money-bill-transfer nav_icon"></i>Transfers</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <li class="nav-item">
+                        <a @click="logOut" class="nav_link" href="#">
+                            <i class="fa-solid fa-right-from-bracket nav_icon"></i> Log out
+                        </a>
+                    </li>
+                </nav>
+            </div>
+
+            <!--Main start-->
+            
+            <div class="">
+                <h1 class="fw-bolder py-3">Hello {{client.fullName}}</h1>
+
+                <div>
+                    <p class="fw-bolder body_titles"><i class="fa-solid fa-bullhorn body_icons"></i> Offers for you</span>
+                </div>
+
+                <div class="row1-container">
+                    
+                    <div class="box red">
+                        <h2>New insurance incoming</h2>
+                        <p>Soon you will be able to get an insurance with us!</p>
+                        <a href="#">Read about it!</a><video loading="lazy" muted="muted"
+                            src="https://cdnl.iconscout.com/lottie/premium/thumb/fingerprint-lock-5455188-4544589.mp4"
+                            width="50" height="50" type="video/mp4" autoplay="autoplay" loop="loop"></video>
+                    </div>
+
+                    <div class="box red">
+                        <h2>A new way to pay your bills</h2>
+                        <p>
+                            Start paying your bills from the homebanking and get discounts
+                        </p>
+                        <a href="#">Try it!</a><video loading="lazy" muted="muted"
+                            src="https://cdnl.iconscout.com/lottie/premium/thumb/card-payment-5455166-4544567.mp4"
+                            width="50" height="50" type="video/mp4" autoplay="autoplay" loop="loop"></video>
+                    </div>
+
+                    <div class="box red">
+                        <h2>Save and profit!</h2>
+                        <p>Get a save account with us and pay less commissions!</p>
+                        <a href="#">Create now!</a><video loading="lazy" muted="muted"
+                            src="https://cdnl.iconscout.com/lottie/premium/thumb/money-bag-5455190-4544591.mp4"
+                            width="50" height="50" type="video/mp4" autoplay="autoplay" loop="loop"></video>
+                    </div>
+                    
+                </div>
+
+                <div class="d-flex pt-5 justify-content-center flex-wrap gap-5">
+                    <div class="col-md-3">
+                        <div>
+                            <p class="fw-bolder body_titles"><i class="fa-solid fa-file-invoice-dollar body_icons"></i> Accounts</span>
+                        </div>
+
+                        
+                        <div v-for="account in accounts" class="py-2">
+                            <div class="card blue">
+                                <div class="card_title"><a :href="'http://localhost:8080/web/account.html?id=' + account.id">
+                                    <div class="text-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Check account">Account: {{account.number}} <i class="fa-solid fa-wallet"></i></div>
+                                </a></div>
+                                <div class="value">Balance: ${{account.balance}}</div>
+                                <div class="stat">
+                                    <b>Creation date:</b> {{account.creationDate}}
+                                </div>
+                            </div>
+                            <p>{{account.type}}</p>
+                        </div>
+
+                        <button v-if="accounts.length < 3" @click="createAccount"
+                            class="nav-link bi bi-box-arrow-right">
+                            Create new account
+                        </button>
+
+                        <div v-if="errorActive">
+                            <p class="text-danger pt-1 m-0">Error: {{errorMessage}}</p>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4 ">
+                        <div>
+                            <p class="fw-bolder body_titles"><i class="fa-solid fa-receipt body_icons"></i> Last Movements</span>
+                        </div>
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr></tr>
+                                <tr v-for="transaction in lastTransactions" class="static" :class="transaction.type == 'DEBIT' ? debitClass : creditClass">
+                                    <td>{{transaction.date.slice(0,10) + " - " + transaction.date.slice(11,19)}}</td>
+                                    <td>$ {{transaction.amount}}</td>
+                                    <td>{{transaction.description}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div>
+                            <p class="fw-bolder body_titles"><i class="fa-solid fa-hand-holding-dollar body_icons"></i> Loans</span>
+                        </div>
+
+                        <div v-if="loans.length > 0" v-for="loan in loans" class="py-2">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="text-dark fw-bolder mb-0">
+                                        Loan type: {{loan.name}}
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="text-dark fw-bolder mb-0">
+                                        Amount: {{loan.amount}}
+                                    </h6>
+                                    <h6 class="text-dark fw-bolder mb-0">
+                                        Payments: {{loan.payments}}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <template v-else>
+                            <h6 class="text-dark fw-bolder mb-0 small">
+                                You have no loans
+                            </h6>
+                            <div class="box red">
+                                <h2>Need a loan?</h2>
+                                <p>Don't miss your oportity to get a loan low on fees</p>
+                                <a href="./loan-application.html">Apply now!</a><video loading="lazy" muted="muted"
+                                    src="https://cdnl.iconscout.com/lottie/premium/thumb/cash-in-hand-5455192-4544593.mp4"
+                                    width="50" height="50" type="video/mp4" autoplay="autoplay" loop="loop"></video>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        (function () {
+            var ldk = document.createElement("script");
+            ldk.type = "text/javascript";
+            ldk.async = true;
+            ldk.src =
+                "https://s.cliengo.com/weboptimizer/62853b43ddf56b002ab367d5/62853b45ddf56b002ab367d8.js?platform=view_installation_code";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(ldk, s);
+        })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./scripts/dashboard.js"></script>
+</body>
+
+</html>

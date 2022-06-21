@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/sakura.css">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    
+   <title>Online Banking AnimaBank | Log in</title>
+</head>
+
+<body>
+
+  <main id="app">
+
+    <div id="body">
+
+  <div class="login">
+    <div class="login__content">
+      <div class="login__img">
+        <img src="./assets/logoanima.png" alt="logo" class="imgLogo">
+        <img src="./assets/loginanima.png" alt="user login" class="imgLogin">
+      </div>
+      <div class="login__forms">
+
+<!-- login -->
+
+        <form @submit.prevent="signIn" class="login__register" id="login-in">
+          <h1 class="login__title">Sign In</h1>
+          <div class="login__box">
+            <i class='bi bi-person-fill login__icon'></i>
+            <input type="email" placeholder="Email" class="login__input" v-model="loginEmail" >
+          </div>
+          <div class="login__box d-flex">
+            <i class='bi bi-key-fill login__icon'></i>
+            <input :type="passwordType" class="login__input" placeholder="Password" v-model="loginPassword" >
+           <i @click="toggleType" :class="passwordType == 'password' ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'" aria-hidden="true" id="eye"></i>
+          </div>
+          <a href="#" class="login__forgot">Forgot Password? </a>
+          
+          <button type="submit" class="login__button">Log in</button>
+          
+          <div>
+            <span class="login__account login__account--account">Don't Have an Account?</span>
+            <span @click.capture="toggleClass" class="login__signin login__signup--signup" id="sign-up"> Sign Up Now!</span>
+          </div>
+        </form>
+        
+<!-- register -->
+
+        <form @submit.prevent="signUp" class="login__create none" id="login-up">
+          <h1 class="login__title">Create Account</h1>
+          <div class="login__box">
+            <i class='bi bi-person-lines-fill login__icon'></i>
+            <input type="text" placeholder="First Name" class="login__input" v-model="regFirstName" >
+          </div>
+
+          <div class="login__box">
+            <i class='bi bi-person-lines-fill login__icon'></i>
+            <input type="text" placeholder="Last Name" class="login__input" v-model="regLastName" >
+          </div>
+          
+          <div class="login__box">
+            <i class='bi bi-envelope-fill login__icon'></i>
+            <input type="email" placeholder="Email" class="login__input" v-model="regEmail" >
+          </div>
+          
+          <div class="login__box d-flex">
+            <i class='bi bi-key-fill login__icon'></i>
+            <input :type="passwordType" class="login__input" placeholder="Password" v-model="regPassword"  />
+            <i @click="toggleType" :class="passwordType == 'password' ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'" aria-hidden="true" id="eye"></i>
+          </div>
+
+          <div v-if="errorActive">
+            <p class="text-danger pt-1 m-0">Error: {{errorMessage}}</p>
+          </div>
+          
+          <button type="submit" class="login__button">Sign Up</button>
+          
+          <div>
+            <span class="login__account login__account--account">Already have an Account?</span>
+            <span @click.capture="toggleClass" class="login__signup login__signin--signin" id="sign-in"> Sign In</span>
+          </div>
+          
+          
+        </form>
+      </div>
+    </div>
+   </div>
+
+  </div>
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./scripts/login.js"></script>
+  <script src="./scripts/sakura.js"></script>
+  <script>
+  var sakura = new Sakura('body')
+  </script>
+</body>

@@ -1,0 +1,227 @@
+/* NAV */
+
+:root {
+  --header-height: 3rem;
+  --nav-width: 68px;
+  --first-color: #4723d9;
+  --first-color-light: #afa5d9;
+  --white-color: #f7f6fb;
+  --body-font: "Nunito", sans-serif;
+  --normal-font-size: 1rem;
+  --z-fixed: 100;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+body {
+  margin: calc(var(--header-height) + 1rem) 0 0 0;
+  padding-left: calc(var(--nav-width) + 2rem);
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: #fdf5ea;
+  height: 100vh;
+}
+
+header {
+  width: 100%;
+  height: calc(var(--header-height) + 1rem);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
+  background-color: #184552;
+  z-index: var(--z-fixed);
+  transition: 1s;
+}
+
+
+.header_toggle {
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 32px;
+}
+
+.header_img {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(170, 247, 221);
+}
+
+.header_intials {
+  font-weight: bolder;
+}
+
+.header_logo {
+  width: auto;
+  height: 50px;
+}
+
+.header_icon {
+  color: white;
+}
+
+.item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: green;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  text-align: inherit;
+  padding: 0;
+}
+
+.dropdown-menu {
+  background-color: #fdf5ea;
+  border: 1px solid #184552;
+  border-radius: 0.25rem;
+  top: 23px !important;
+}
+
+.l-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--nav-width);
+  height: 100vh;
+  background-color: #184552;
+  padding: 1rem 1rem 0 0;
+  transition: 1s;
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.header_toggle,
+.nav_link {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  column-gap: 1rem;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.nav_link {
+  position: relative;
+  color: #fdf5ea;
+  margin-bottom: 1.5rem;
+  transition: 0.3s;
+}
+
+.nav_link:hover {
+  color: var(--white-color);
+}
+.nav_icon {
+  font-size: 1.25rem;
+}
+
+#nav-content ul {
+  list-style: none;
+  padding: 0;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+a {
+  text-decoration: none;
+}
+
+.show {
+  width: calc(var(--nav-width) + 156px);
+}
+
+.body-pd {
+  padding-left: calc(var(--nav-width) + 188px);
+}
+
+.active {
+  color: var(--white-color);
+  background-color: rgba(255, 255, 255, 0.253);
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 32px;
+  background-color: var(--white-color);
+}
+
+/* //////////// */
+
+.container {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 100;
+}
+.container .row .card {
+  width: 300px;
+  height: 350px;
+  margin: 30px;
+  background: rgba(255, 255, 255, 0.205);
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  border-top: 1px solid rgba( 255, 255, 255, 0.18 );
+  border-left: 1px solid rgba( 255, 255, 255, 0.18 );
+  box-shadow: 1px 1px 1px 1px rgba( 12, 66, 79, 0.37 );
+  border-radius: 15px;
+  
+}
+.container .row .card .card-body {
+  padding: 1rem 1.2rem;
+  color: rgb(0, 0, 0);
+}
+.container .row .card .card-body .card-img lottie-player {
+  width: 150px;
+  margin-left: 3rem;
+  height: 150px;
+  transform: translateY(50px);
+  transition: 0.5s;
+}
+.container .row .card .card-body .name {
+  transform: translateY(50px);
+  margin-bottom: 20px;
+  transition: 0.5s;
+}
+.container .row .card .card-body .card-info {
+  font-size: 0.9rem;
+  transform: translateY(10px);
+  transition: 0.5s;
+  opacity: 0;
+}
+.container .row .card:hover .card-body .card-info,
+.container .row .card:hover .card-body .name,
+.container .row .card:hover .card-body .card-img lottie-player {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
