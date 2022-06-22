@@ -47,7 +47,7 @@ Vue.createApp({
         // add padding to body
         body.classList.toggle('body-pd')
         // add padding to header
-        header.classList.toggle('body-pd')
+        header.classList.toggle('header-pd')
         },
 
         disableCard(id){

@@ -120,22 +120,22 @@ Vue.createApp({
             })
         },
 
-      toggleNav() {
+        toggleNav() {
 
-        const toggle = document.getElementById("header-toggle"),
-        nav = document.getElementById("nav-bar"),
-        body = document.getElementById("body"),
-        header = document.getElementById("header")
-        
-        // show navbar
-        nav.classList.toggle('show')
-        // change icon
-        toggle.classList.toggle('bx-x')
-        // add padding to body
-        body.classList.toggle('body-pd')
-        // add padding to header
-        header.classList.toggle('body-pd')
-        }
+          const toggle = document.getElementById("header-toggle"),
+          nav = document.getElementById("nav-bar"),
+          body = document.getElementById("body"),
+          header = document.getElementById("header")
+          
+          // show navbar
+          nav.classList.toggle('show')
+          // change icon
+          toggle.classList.toggle('bx-x')
+          // add padding to body
+          body.classList.toggle('body-pd')
+          // add padding to header
+          header.classList.toggle('header-pd')
+          }
 
     },
   

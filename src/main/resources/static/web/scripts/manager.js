@@ -3,7 +3,7 @@ Vue.createApp({
   data() {
     return {
 
-      URLAPI:"/rest/clients",
+      URLAPI:"/api/clients",
       clients:[],
       client:[],
       firstname: "",
@@ -19,7 +19,7 @@ Vue.createApp({
 
     axios.get (this.URLAPI)
       .then (data => {
-        this.clients= data.data._embedded.clients
+        this.clients= data.data
       })
       .catch(error => console.warn(error.message))
   },

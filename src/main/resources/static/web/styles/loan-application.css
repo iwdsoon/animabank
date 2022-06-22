@@ -3,13 +3,9 @@
 :root {
   --header-height: 3rem;
   --nav-width: 68px;
-  --first-color: #4723d9;
-  --first-color-light: #afa5d9;
   --white-color: #f7f6fb;
-  --body-font: "Nunito", sans-serif;
-  --normal-font-size: 1rem;
-  --z-fixed: 100;
 }
+
 
 * {
   margin: 0;
@@ -18,14 +14,18 @@
   box-sizing: border-box;
 }
 
+
 body {
+  position: relative;
   margin: calc(var(--header-height) + 1rem) 0 0 0;
   padding-left: calc(var(--nav-width) + 2rem);
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
-  background-color: #fdf5ea;
-  height: 100vh;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1rem;
+  background-color: #FDF5EA;
+  transition: 1s;
+  max-width: 100vw;
 }
+
 
 header {
   width: 100%;
@@ -35,10 +35,10 @@ header {
   left: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content:space-between;
   padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
   background-color: #184552;
-  z-index: var(--z-fixed);
+  z-index: 1000;
   transition: 1s;
 }
 
@@ -59,20 +59,21 @@ header {
   background-color: rgb(170, 247, 221);
 }
 
-.header_intials {
+.header_intials{
   font-weight: bolder;
 }
 
 .header_logo {
   width: auto;
-  height: 50px;
+  height:50px
 }
 
-.header_icon {
+.header_icon{
   color: white;
+
 }
 
-.item-icon {
+.item-icon{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,11 +94,12 @@ header {
 }
 
 .dropdown-menu {
-  background-color: #fdf5ea;
+  background-color: #FDF5EA;
   border: 1px solid #184552;
   border-radius: 0.25rem;
-  top: 23px !important;
+  top:23px !important;
 }
+
 
 .l-navbar {
   position: fixed;
@@ -108,7 +110,7 @@ header {
   background-color: #184552;
   padding: 1rem 1rem 0 0;
   transition: 1s;
-  z-index: var(--z-fixed);
+  z-index: 1000;
 }
 
 .nav {
@@ -128,9 +130,10 @@ header {
   padding: 0.5rem 0 0.5rem 1.5rem;
 }
 
+
 .nav_link {
   position: relative;
-  color: #fdf5ea;
+  color: #FDF5EA;
   margin-bottom: 1.5rem;
   transition: 0.3s;
 }
@@ -141,6 +144,7 @@ header {
 .nav_icon {
   font-size: 1.25rem;
 }
+
 
 #nav-content ul {
   list-style: none;
@@ -153,12 +157,38 @@ a {
   text-decoration: none;
 }
 
+@media screen and (min-width:660px){
 .show {
   width: calc(var(--nav-width) + 156px);
 }
 
 .body-pd {
-  padding-left: calc(var(--nav-width) + 188px);
+  padding-left: calc(var(--nav-width) + 70px)
+}
+
+.header-pd{
+  padding-left: calc(var(--nav-width) + 170px);
+}
+}
+
+@media screen and (max-width:660px){
+.show {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+.notifications{
+  display: none;
+}
+
+header{
+  justify-content: center;
+}
+
+.header_logo{
+  height: 45px;
+}
+
 }
 
 .active {
@@ -178,8 +208,8 @@ a {
 /* //////////// */
 
 .container {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   position: relative;
   z-index: 100;
 }
@@ -189,7 +219,6 @@ a {
   margin: 30px;
   background: rgba(255, 255, 255, 0.205);
   overflow: hidden;
-  backdrop-filter: blur(5px);
   border-top: 1px solid rgba( 255, 255, 255, 0.18 );
   border-left: 1px solid rgba( 255, 255, 255, 0.18 );
   box-shadow: 1px 1px 1px 1px rgba( 12, 66, 79, 0.37 );
@@ -202,7 +231,6 @@ a {
 }
 .container .row .card .card-body .card-img lottie-player {
   width: 150px;
-  margin-left: 3rem;
   height: 150px;
   transform: translateY(50px);
   transition: 0.5s;
