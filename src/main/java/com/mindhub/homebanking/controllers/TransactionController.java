@@ -71,7 +71,7 @@ public class TransactionController {
 			return new ResponseEntity<>("Missing destiny number account", HttpStatus.FORBIDDEN);
 		}
 
-		if (amount == 0 || amount.isNaN() || amount.isInfinite()){
+		if (amount <= 0 || amount.isNaN() || amount.isInfinite()){
 			return new ResponseEntity<>("Wrong amount", HttpStatus.FORBIDDEN);
 		}
 
