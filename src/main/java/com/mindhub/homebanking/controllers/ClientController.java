@@ -66,7 +66,7 @@ public class ClientController {
 		if (password.isEmpty()) {
 			return new ResponseEntity<>("Missing password", HttpStatus.FORBIDDEN);
 		}
-		if (password.length() < 6){
+		if (password.length() < 5){
 			return new ResponseEntity<>("Your password is too short", HttpStatus.FORBIDDEN);
 		}
 

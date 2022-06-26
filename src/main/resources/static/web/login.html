@@ -74,7 +74,7 @@
           
           <div class="login__box d-flex">
             <i class='bi bi-key-fill login__icon'></i>
-            <input :type="passwordType" class="login__input" placeholder="Password" v-model="regPassword"  />
+            <input :type="passwordType" class="login__input" placeholder="Password | Min 6 characters" v-model="regPassword"  />
             <i @click="toggleType" :class="passwordType == 'password' ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'" aria-hidden="true" id="eye"></i>
           </div>
 
